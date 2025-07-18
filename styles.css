@@ -1,0 +1,125 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', 'Inter', Arial, sans-serif;
+  background: #f4f8fb;
+  color: #222b45;
+  padding: 30px;
+}
+.container {
+  max-width: 1100px;
+  background: #fff;
+  margin: auto;
+  padding: 30px 35px 30px 35px;
+  border-radius: 13px;
+  box-shadow: 0 7px 44px rgba(71,119,179,0.10);
+}
+h1 {
+  text-align: center;
+  margin-bottom: 35px;
+}
+form {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 22px;
+  gap: 10px;
+}
+input {
+  padding: 10px 14px;
+  font-size: 16px;
+  width: 55%;
+  border: 1px solid #ccd6e0;
+  border-radius: 7px;
+}
+button {
+  padding: 10px 24px;
+  font-size: 16px;
+  background: #3867d6;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+button:hover {
+  background: #2556b5;
+}
+.loader {
+  margin: 14px auto;
+  border: 5px solid #eaeaea;
+  border-top: 5px solid #3867d6;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  to { transform: rotate(360deg) }
+}
+.hidden { display: none; }
+.error {
+  color: #c0392b;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.section {
+  background: #f4f8fb;
+  margin: 32px 0 16px 0;
+  padding: 18px 22px;
+  border-radius: 9px;
+  box-shadow: 0 1px 8px rgba(100,110,140,0.08);
+}
+.section h2 {
+  margin: 0 0 14px 0;
+  font-size: 21px;
+  color: #3867d6;
+  font-weight: 700;
+}
+.details-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+.details-table td, .details-table th {
+  padding: 7px 7px;
+  border-bottom: 1px solid #e1e6eb;
+  text-align: left;
+  font-size: 15px;
+  vertical-align: top;
+}
+.details-table th {
+  color: #2d466b;
+  background: transparent;
+  font-weight: 600;
+  width: 195px;
+}
+.asset-col {
+  background: #f5f9ff;
+}
+.software-list {
+  columns: 2 350px;
+  -webkit-columns: 2 350px;
+  -moz-columns: 2 350px;
+  padding-left: 10px;
+  padding-bottom: 10px;
+}
+.software-entry {
+  margin-bottom: 9px;
+  display: block;
+}
+.value-small {
+  color: #5a5a5a;
+  font-size: 14px;
+  margin-left: 11px;
+}
+@media (max-width: 700px) {
+  .container {
+    padding: 10px 2px 10px 2px;
+  }
+  .section {
+    padding: 7px 2px;
+  }
+  .details-table th, .details-table td {
+    font-size: 13px;
+  }
+}
