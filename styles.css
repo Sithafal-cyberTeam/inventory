@@ -40,14 +40,16 @@ body, html {
 }
 
 .login-card {
-  background: var(--card-bg);
-  border-radius: 16px;
-  box-shadow: var(--shadow);
+  background: linear-gradient(145deg, #1f1f2e, #2a2a3b); /* Elegant dark gradient */
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); /* Soft shadow for depth */
   padding: 40px;
   width: 100%;
   max-width: 420px;
   text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.05); /* Optional: subtle border */
 }
+
 
 .login-header {
   margin-bottom: 30px;
@@ -61,7 +63,7 @@ body, html {
 .login-header h2 {
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--text);
+  color: var(--text-light);
 }
 
 .input-group {
