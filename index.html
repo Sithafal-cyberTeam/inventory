@@ -2,25 +2,127 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Asset Inventory Dashboard</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Asset Intelligence Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
 <body>
-  <div class="container">
-    <h1>📋 Asset Inventory Dashboard</h1>
-
-    <form id="agent-form">
-      <input type="text" id="agentId" placeholder="Enter Hostname or Agent ID…" required />
-      <button type="submit">Fetch</button>
-    </form>
-
-    <div id="loader" class="loader hidden"></div>
-    <div id="error-message" class="error hidden"></div>
-    
-    <div id="inventory" class="hidden"></div>
+  <!-- Login Screen -->
+  <div id="loginScreen" class="login-screen">
+    <div class="login-card">
+      <div class="login-header">
+        <img src="https://cdn.prod.website-files.com/638907e1e54a44ce869fe807/63a3c5833e5c9a5c4e15632d_idea-entity-logo_dark-bg.svg" alt="Logo" />
+        <h2>Asset Intelligence Dashboard</h2>
+      </div>
+      <form id="loginForm">
+        <div class="input-group">
+          <i class="ph-bold ph-lock"></i>
+          <input type="password" id="password" placeholder="Enter access password" required autocomplete="off" />
+        </div>
+        <button type="submit" class="login-btn">
+          <i class="ph-bold ph-key"></i> Access Dashboard
+        </button>
+      </form>
+      <p class="login-note">For security reasons, all access is logged</p>
+    </div>
   </div>
+
+  <!-- Main Application -->
+  <div id="app" class="app-grid hidden">
+    <nav class="sidebar">
+      <div class="sidebar-header">
+        <img src="https://cdn.prod.website-files.com/638907e1e54a44ce869fe807/63a3c5833e5c9a5c4e15632d_idea-entity-logo_dark-bg.svg" alt="Logo" />
+        <div class="sidebar-title">Asset Intelligence</div>
+      </div>
+      
+      <ul class="sidebar-nav">
+        <li class="active"><i class="ph-bold ph-bar-chart"></i> Dashboard</li>
+        <li><i class="ph-bold ph-list"></i> Asset List</li>
+        <li><i class="ph-bold ph-gear"></i> Settings</li>
+        <li id="logoutBtn"><i class="ph-bold ph-sign-out"></i> Logout</li>
+      </ul>
+      
+      <div class="sidebar-footer">
+        <div class="sidebar-date" id="sidebarDate"></div>
+        <div class="status-indicator">
+          <div class="status-dot"></div>
+          <span>Live Data</span>
+        </div>
+      </div>
+    </nav>
+    
+    <main>
+      <header>
+        <h1>Asset Inventory Dashboard</h1>
+        <div class="header-actions">
+          <select id="agentList"><option disabled selected>Select Agent</option></select>
+          <button class="refresh-btn" id="refreshBtn"><i class="ph-bold ph-arrows-clockwise"></i> Refresh Data</button>
+        </div>
+      </header>
+      
+      <section id="welcomeSection" class="welcome-section">
+        <div class="welcome-content">
+          <img src="/it assets.png" class="welcome-img" alt="Welcome to Dashboard" />
+          <h2>Welcome to Asset Intelligence</h2>
+          <p>Refresh agents and select a host to view real-time asset details and analytics</p>
+        </div>
+      </section>
+      
+      <section id="dashboardSection" class="dashboard-section hidden">
+        <div class="stat-cards" id="statCards"></div>
+        
+        <div class="dashboard-grid">
+          <div class="detail-section">
+            <div class="detail-tabs">
+              <button class="tab-btn active" data-tab="sys"><i class="ph-bold ph-device-tablet"></i> System</button>
+              <button class="tab-btn" data-tab="hw"><i class="ph-bold ph-cpu"></i> Hardware</button>
+              <button class="tab-btn" data-tab="net"><i class="ph-bold ph-globe"></i> Network</button>
+              <button class="tab-btn" data-tab="sw"><i class="ph-bold ph-app-window"></i> Software</button>
+              <button class="tab-btn" data-tab="usr"><i class="ph-bold ph-users"></i> Users</button>
+            </div>
+            
+            <div class="tab-content">
+              <div class="tab-panel" data-panel="sys"></div>
+              <div class="tab-panel hidden" data-panel="hw"></div>
+              <div class="tab-panel hidden" data-panel="net"></div>
+              <div class="tab-panel hidden" data-panel="sw"></div>
+              <div class="tab-panel hidden" data-panel="usr"></div>
+            </div>
+          </div>
+          
+          <div class="charts-section">
+            <div class="chart-card">
+              <h3><i class="ph-bold ph-memory"></i> Memory Usage</h3>
+              <canvas id="memChart" class="chart"></canvas>
+            </div>
+            
+            <div class="chart-card">
+              <h3><i class="ph-bold ph-hard-drives"></i> Drive Utilization</h3>
+              <canvas id="driveChart" class="chart"></canvas>
+            </div>
+            
+            <div class="chart-card">
+              <h3><i class="ph-bold ph-user-circle"></i> User Distribution</h3>
+              <canvas id="userChart" class="chart"></canvas>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Sample Assets Section, Hidden by Default -->
+<section id="assetsSection" class="dashboard-section hidden">
+  <h2 style="margin-bottom: 20px;">All Assets</h2>
+  <div class="software-grid" id="assetListGrid"></div>
+</section>
+
+      
+      <div id="loader" class="loader hidden"></div>
+      <div id="errorMsg" class="error-msg hidden"></div>
+    </main>
+  </div>
+  
   <script src="script.js"></script>
 </body>
 </html>
